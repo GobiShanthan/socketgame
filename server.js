@@ -15,6 +15,14 @@ const io = new Server(httpServer, { /* options */ });
 
 io.on("connection", (socket) => {
     console.log('a user connected');
+
+    socket.on('name', (msg) => {
+      console.log('name: ' + msg);
+    });
+
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
 });
 
 require('dotenv').config();
